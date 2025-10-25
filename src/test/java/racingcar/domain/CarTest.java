@@ -7,7 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-public class CarTest {
+class CarTest {
 
     @DisplayName("자동차 이름 생성 성공 테스트")
     @ParameterizedTest

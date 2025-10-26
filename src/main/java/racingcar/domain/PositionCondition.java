@@ -1,17 +1,18 @@
 package racingcar.domain;
 
-
-import java.util.function.Supplier;
+import racingcar.utils.RandomNumberGenerator;
 
 public class PositionCondition {
     private static final int MOVE_THRESHOLD = 4;
-    private final Supplier<Integer> randomNumberSupplier;
+    private final RandomNumberGenerator rng;
 
-    public PositionCondition(Supplier<Integer> randomNumberSupplier) {
-        this.randomNumberSupplier = randomNumberSupplier;
+    public PositionCondition() {
+        this.rng = new RandomNumberGenerator();
     }
 
-    public boolean canMove() {
-        return randomNumberSupplier.get() >= MOVE_THRESHOLD;
+    public void tryMove(Car car) {
+        if (rng.generate() >= MOVE_THRESHOLD) {
+            car.moveForward();
+        }
     }
 }

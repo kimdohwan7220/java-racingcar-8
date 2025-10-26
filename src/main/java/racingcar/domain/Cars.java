@@ -28,9 +28,17 @@ public class Cars {
         return max;
     }
 
-    public List<String> getCarsPosition() {
+    public List<String> getStatusPosition() {
         return cars.stream()
                 .map(Car::toString)
+                .collect(Collectors.toList());
+    }
+
+    public List<String> getWinnerNames() {
+        int maxPosition = getMaxCarPosition();
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
                 .collect(Collectors.toList());
     }
 

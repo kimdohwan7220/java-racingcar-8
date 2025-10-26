@@ -14,6 +14,13 @@ public class Cars {
         this.positionCondition = new PositionCondition();
     }
 
+    public static Cars createCarList(List<Name> names) {
+        List<Car> carList = names.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
+        return new Cars(carList);
+    }
+
     public void moveAllCars() {
         for (Car car : cars) {
             positionCondition.tryMove(car);
@@ -41,5 +48,4 @@ public class Cars {
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }
-
 }

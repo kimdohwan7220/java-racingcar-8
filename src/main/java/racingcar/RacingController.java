@@ -22,6 +22,8 @@ public class RacingController {
 
         Cars cars = Cars.createCarList(names);
 
+        OutputView.printResultHeader();
+
         playGame(cars, tryCount);
 
         OutputView.printWinners(cars);

@@ -9,7 +9,7 @@ public class Cars {
     private final List<Car> cars;
     private final PositionCondition positionCondition;
 
-    private Cars(List<Car> cars) {
+    Cars(List<Car> cars) {
         this.cars = cars;
         this.positionCondition = new PositionCondition();
     }

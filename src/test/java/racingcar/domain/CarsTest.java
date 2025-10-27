@@ -44,9 +44,9 @@ public class CarsTest {
         assertThat(afterMove.stream().anyMatch(s -> s.contains("-"))).isTrue();
     }
 
-    @DisplayName("가장 많이 이동한 자동차 반환 테스트 - 우승자 반환 테스트")
+    @DisplayName("우승자가 1명인 경우")
     @Test
-    void 우승자_반환() {
+    void 우승자_1명_반환() {
 
         Car car1 = new Car(new Name("pobi"));
         Car car2 = new Car(new Name("woni"));
@@ -61,5 +61,22 @@ public class CarsTest {
         List<String> winnerNames = testCars.getWinnerNames();
 
         assertThat(winnerNames).containsExactly("pobi");
+    }
+
+    @DisplayName("우승자가 2명 이상인 경우")
+    @Test
+    void 우승자_2명_반환() {
+        Car car1 = new Car(new Name("pobi"));
+        Car car2 = new Car(new Name("woni"));
+        Car car3 = new Car(new Name("jun"));
+
+        Cars testCars = new Cars(List.of(car1, car2, car3));
+
+        car1.moveForward();
+        car2.moveForward();
+
+        List<String> winnerNames = testCars.getWinnerNames();
+
+        assertThat(winnerNames).containsExactlyInAnyOrder("pobi", "woni");
     }
 }
